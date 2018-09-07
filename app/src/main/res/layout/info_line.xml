@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_info_line"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="3">
+
+    <TextView
+        android:id="@+id/txt_date_of_week"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DOW"
+        android:textColor="#00bfa5"
+        android:layout_marginStart="5dp"
+        android:layout_gravity="start"
+        android:layout_weight="1"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/txt_cost_per_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:layout_marginEnd="5dp"
+        android:textColor="#ff1744"
+        android:gravity="end"
+        android:text="Cost"
+        android:textSize="20sp"/>
+
+</LinearLayout>

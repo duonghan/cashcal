@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "38700409467",
+    "firebase_url": "https://cashcal-58a2a.firebaseio.com",
+    "project_id": "cashcal-58a2a",
+    "storage_bucket": "cashcal-58a2a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38700409467:android:77b668a2e6b556f2",
+        "android_client_info": {
+          "package_name": "com.edu.hust.henry.cashcal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38700409467-g592guj9i0l09nd9ut175sa85vqrjshr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.edu.hust.henry.cashcal",
+            "certificate_hash": "fc86b3efecd3eaa7d78a60f9bd8b9d647d1f2648"
+          }
+        },
+        {
+          "client_id": "38700409467-i7nvfcht03vqi0n2lu63f9ctmprtuhri.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDZIC7otTIxciwCq4P93fJfwmDpSYYnGU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "38700409467-i7nvfcht03vqi0n2lu63f9ctmprtuhri.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

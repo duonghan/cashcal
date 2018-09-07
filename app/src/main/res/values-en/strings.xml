@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CashCal</string>
+    <string name="language">Language</string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
 </resources>

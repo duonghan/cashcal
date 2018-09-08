@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddOrderActivity"></activity>
+        <activity android:name=".AddOrderActivity" />
+        <activity android:name=".SplashScreenActivity"></activity>
     </application>
 
 </manifest>

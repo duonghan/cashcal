@@ -15,4 +15,139 @@
 
     </android.support.v7.widget.Toolbar>
 
+    <ScrollView
+        android:layout_below="@id/toolbar_add_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_below="@id/toolbar_add_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/input_cost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/cost"
+                app:met_floatingLabel="highlight"
+                android:inputType="number"
+                app:met_typeface="fonts/digital-7.ttf"
+                app:met_floatingLabelTextSize="15sp"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/lbl_agent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/input_cost"
+                android:layout_marginTop="20dp"
+                android:text="@string/agent"
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimary"/>
+
+            <Spinner
+                android:id="@+id/spinner_agent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lbl_agent"
+                android:layout_marginTop="20dp"
+                android:entries="@array/agent_arrays"
+                android:prompt="@string/choose_agent" />
+
+            <TextView
+                android:id="@+id/lbl_partner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/spinner_agent"
+                android:layout_marginTop="20dp"
+                android:text="@string/partner"
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimary"/>
+
+            <LinearLayout
+                android:id="@+id/rdo_group"
+                android:layout_below="@id/lbl_partner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/radioHuy"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:buttonTint="@color/Triadic"
+                    android:text="@string/huy" />
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/radioDuong"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:buttonTint="@color/Triadic"
+                    android:text="@string/duong"
+                     />
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/radioKhiem"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:buttonTint="@color/Triadic"
+                    android:text="@string/khiem" />
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/radioKhanh"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:buttonTint="@color/Triadic"
+                    android:text="@string/khanh" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lbl_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rdo_group"
+                android:layout_marginTop="20dp"
+                android:text="@string/date"
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/txt_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lbl_date"
+                android:layout_marginTop="20dp"
+                android:text="08/11/2018"
+                android:textColor="@color/Triadic" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/input_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/note"
+                android:layout_below="@id/txt_date"
+                android:layout_marginTop="20dp"
+                app:met_floatingLabel="highlight"
+                android:inputType="textMultiLine"
+                app:met_floatingLabelTextSize="15sp"
+                android:lines="4"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
 </RelativeLayout>

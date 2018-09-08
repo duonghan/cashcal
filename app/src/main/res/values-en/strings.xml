@@ -5,4 +5,14 @@
     <string name="about">About</string>
     <string name="exit">Exit</string>
     <string name="save">Save</string>
+    <string name="title_add_order">Add Order</string>
+    <string name="cost">Cost</string>
+    <string name="huy">Huy</string>
+    <string name="duong">Dương</string>
+    <string name="khiem">Khiêm</string>
+    <string name="khanh">Khánh</string>
+    <string name="agent">Agent</string>
+    <string name="partner">Partner</string>
+    <string name="date">Date</string>
+    <string name="note">Note</string>
 </resources>

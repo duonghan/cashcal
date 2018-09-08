@@ -5,4 +5,14 @@
     <string name="about">Giới thiệu</string>
     <string name="exit">Thoát</string>
     <string name="save">Lưu</string>
+    <string name="title_add_order">Thêm mới</string>
+    <string name="cost">Chi phí</string>
+    <string name="huy">Huy</string>
+    <string name="duong">Dương</string>
+    <string name="khiem">Khiêm</string>
+    <string name="khanh">Khánh</string>
+    <string name="agent">Người mua: </string>
+    <string name="partner">Thành viên</string>
+    <string name="date">Ngày</string>
+    <string name="note">Ghi chú</string>
 </resources>

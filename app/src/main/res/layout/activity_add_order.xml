@@ -75,7 +75,7 @@
                 android:weightSum="4">
 
                 <android.support.v7.widget.AppCompatCheckBox
-                    android:id="@+id/radioHuy"
+                    android:id="@+id/chbHuy"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
                     android:text="@string/huy" />
 
                 <android.support.v7.widget.AppCompatCheckBox
-                    android:id="@+id/radioDuong"
+                    android:id="@+id/chbDuong"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                      />
 
                 <android.support.v7.widget.AppCompatCheckBox
-                    android:id="@+id/radioKhiem"
+                    android:id="@+id/chbKhiem"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
                     android:text="@string/khiem" />
 
                 <android.support.v7.widget.AppCompatCheckBox
-                    android:id="@+id/radioKhanh"
+                    android:id="@+id/chbKhanh"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

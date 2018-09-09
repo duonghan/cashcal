@@ -26,13 +26,13 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         loadLocale()
 
-        var subjectName: List<String> = listOf("IOS", "Android", "React", "PHP")
-        var arrayInfo: ArrayList<Info> = ArrayList()
+        val arrayInfo: ArrayList<Info> = ArrayList()
         arrayInfo.add(Info("Mon", 21000))
         arrayInfo.add(Info("Tue", 22000))
         arrayInfo.add(Info("Wed", 25000))
@@ -87,13 +87,17 @@ class MainActivity : AppCompatActivity() {
         list.setMenuCreator(creator)
 
         fab_add_order.setOnClickListener {
-            var intent: Intent = Intent(this@MainActivity, AddOrderActivity::class.java)
+            val intent = Intent(this@MainActivity, AddOrderActivity::class.java)
             startActivity(intent)
         }
 
         setSupportActionBar(toolbar_main)
     }
 
+    /**
+     * @description: inflate menu from xml file and add spinner
+     * @param: menu
+     */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
 
@@ -122,19 +126,26 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    /**
+     * @description: handle when menu item is clicked
+     * @param: menu item
+     */
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val id: Int? = item?.itemId
 
         when(id){
             R.id.menu_item_language -> onChangeLang()
             R.id.menu_item_about -> onAbout()
-            R.id.menu_item_exit -> finish()
+            R.id.menu_item_exit -> System.exit(0)
             else -> Toast.makeText(this, "Invalid Choose", Toast.LENGTH_SHORT).show()
         }
 
         return super.onOptionsItemSelected(item)
     }
 
+    /**
+     * @description: handle change language
+     */
     private fun onChangeLang(){
         val items = arrayOf<CharSequence>("English", "Tiếng Việt")
         val dialog = AlertDialog.Builder(this).setTitle(getString(R.string.change_lang)).setItems(items
@@ -157,7 +168,10 @@ class MainActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    // Change locale to change language
+    /**
+     * @description: Change locale to change language
+     * @param: language name
+     */
     private fun setLocale(lang: String) {
         val locale  = Locale(lang)
         Locale.setDefault(locale)
@@ -171,15 +185,18 @@ class MainActivity : AppCompatActivity() {
         editor.apply()
     }
 
-    //Load Language saved to shared preferences
-    public fun loadLocale(){
+    /**
+     * @description: Load Language saved to shared preferences
+     */
+    fun loadLocale(){
         val preferences: SharedPreferences  = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
         val language: String  = preferences.getString("My_Lang", "")
         setLocale(language)
     }
 
-
-
+    /**
+     * @return display about dialog
+     */
     private fun onAbout(){
         // Initialize a new instance of
         val builder = AlertDialog.Builder(this@MainActivity)

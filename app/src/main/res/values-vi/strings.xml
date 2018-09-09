@@ -15,4 +15,66 @@
     <string name="partner">Thành viên</string>
     <string name="date">Ngày</string>
     <string name="note">Ghi chú</string>
+    <string name="about_msg">Ứng dụng được viết bởi HD</string>
+    <string name="cancel">Trở về</string>
+    <string name="result">Kết quả</string>
+    <string name="Tuần_spinner">Tuần Spinner</string>
+    <string name="change_lang">Change language</string>
+
+    <string-array name="Tuầns">
+        <item>Tuần 1</item>
+        <item>Tuần 2</item>
+        <item>Tuần 3</item>
+        <item>Tuần 4</item>
+        <item>Tuần 5</item>
+        <item>Tuần 6</item>
+        <item>Tuần 7</item>
+        <item>Tuần 8</item>
+        <item>Tuần 9</item>
+        <item>Tuần 10</item>
+        <item>Tuần 11</item>
+        <item>Tuần 12</item>
+        <item>Tuần 13</item>
+        <item>Tuần 14</item>
+        <item>Tuần 15</item>
+        <item>Tuần 16</item>
+        <item>Tuần 17</item>
+        <item>Tuần 18</item>
+        <item>Tuần 19</item>
+        <item>Tuần 20</item>
+        <item>Tuần 21</item>
+        <item>Tuần 22</item>
+        <item>Tuần 23</item>
+        <item>Tuần 24</item>
+        <item>Tuần 25</item>
+        <item>Tuần 26</item>
+        <item>Tuần 27</item>
+        <item>Tuần 28</item>
+        <item>Tuần 29</item>
+        <item>Tuần 30</item>
+        <item>Tuần 31</item>
+        <item>Tuần 32</item>
+        <item>Tuần 33</item>
+        <item>Tuần 34</item>
+        <item>Tuần 35</item>
+        <item>Tuần 36</item>
+        <item>Tuần 37</item>
+        <item>Tuần 38</item>
+        <item>Tuần 39</item>
+        <item>Tuần 40</item>
+        <item>Tuần 41</item>
+        <item>Tuần 42</item>
+        <item>Tuần 43</item>
+        <item>Tuần 44</item>
+        <item>Tuần 45</item>
+        <item>Tuần 46</item>
+        <item>Tuần 47</item>
+        <item>Tuần 48</item>
+        <item>Tuần 49</item>
+        <item>Tuần 50</item>
+        <item>Tuần 51</item>
+        <item>Tuần 52</item>
+    </string-array>
+    <string name="week_spinner">Week Spinner</string>
+    <string name="choose_agent">Choose agent</string>
 </resources>

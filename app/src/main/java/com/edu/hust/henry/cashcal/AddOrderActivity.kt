@@ -63,7 +63,7 @@ class AddOrderActivity : AppCompatActivity() {
     }
 
     private fun saveOrder(): Boolean{
-
+//        orderDB.child("date").setValue(txt_date.text)
         finish()
         return true
     }

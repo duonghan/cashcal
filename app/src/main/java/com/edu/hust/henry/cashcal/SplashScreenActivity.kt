@@ -5,6 +5,9 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.view.animation.BounceInterpolator
 import com.sdsmdg.harjot.rotatingtext.models.Rotatable
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 
@@ -15,23 +18,31 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        val typeface1: Typeface = Typeface.createFromAsset(assets, "fonts/Raleway-ExtraBold.ttf")
-        val typeface2: Typeface = Typeface.createFromAsset(assets, "fonts/Reckoner_Bold.ttf")
+        val typeface: Typeface = Typeface.createFromAsset(assets, "fonts/UTMAvenida.ttf")
+        val animationLogo: Animation = AnimationUtils.loadAnimation(this@SplashScreenActivity, R.anim.logo)
+        val animationText: Animation = AnimationUtils.loadAnimation(this@SplashScreenActivity, R.anim.bounce)
 
         custom_switcher.size = 35
-        custom_switcher.typeface = typeface1
 
-        val rotatable = Rotatable(Color.parseColor("#62FF6D"), 1000, "BTS", "LilPump", "ChainSmoker")
+        val rotatable = Rotatable(Color.parseColor("#FFFFFF"), 1000,
+                getString(R.string.rtt_name), getString(R.string.rtt_convenient),
+                getString(R.string.rtt_fast), getString(R.string.rtt_effective),
+                getString(R.string.rtt_ahihi))
 
         rotatable.size = 35F
         rotatable.animationDuration = 500
-        rotatable.typeface = typeface2
-//        rotatable.interpolator = BounceInterpolator()
+        rotatable.typeface = typeface
+        rotatable.interpolator = BounceInterpolator()
+        custom_switcher.setContent("",rotatable)
 
-        custom_switcher.setContent("This is ?", rotatable)
+        logo_splash.startAnimation(animationLogo)
+        custom_switcher.startAnimation(animationText)
 
         android.os.Handler().postDelayed(
-                { startActivity(Intent(this, MainActivity::class.java))},
-                5000)
+            {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            },
+            5000)
     }
 }

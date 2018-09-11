@@ -1,6 +1,8 @@
 package com.edu.hust.henry.cashcal
 
+import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
@@ -90,6 +92,7 @@ class AddOrderActivity : AppCompatActivity() {
         val agentId: Int = spinner_agent.selectedItemPosition
         val partnerId: List<Boolean> = listOf(chbHuy.isChecked, chbDuong.isChecked, chbKhiem.isChecked, chbKhanh.isChecked)
         val note: String = input_note.text.toString()
+        val intent: Intent = Intent()
 
         if(cost == null) return
 
@@ -99,6 +102,7 @@ class AddOrderActivity : AppCompatActivity() {
         data.uuid = orderDB.child("order").child("$year").child("$week").child("$dayOfWeek").push().key
         orderDB.child("order").child("$year").child("$week").child("$dayOfWeek").push().setValue(data)
 
+        setResult(Activity.RESULT_OK, intent)
         finish()
     }
 
@@ -107,7 +111,7 @@ class AddOrderActivity : AppCompatActivity() {
         val avg: Int = cost/n
         val costs: MutableList<Int> = mutableListOf()
 
-        for (i in 0..partnerId.size){
+        for (i in 0..(partnerId.size - 1)){
             if(partnerId[i]){
                 if(i == agentId){
                     costs.add(i, cost - avg)

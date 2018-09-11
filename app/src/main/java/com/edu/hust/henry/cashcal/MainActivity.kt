@@ -19,13 +19,16 @@ import android.widget.Spinner
 import android.widget.Toast
 import com.baoyz.swipemenulistview.SwipeMenuCreator
 import com.baoyz.swipemenulistview.SwipeMenuItem
+import com.edu.hust.henry.cashcal.helpers.LocaleHelper
 import com.edu.hust.henry.cashcal.module.Info
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
+const val ADD_ORDER  = 12345
 
 class MainActivity : AppCompatActivity() {
 
+    val localeHelper: LocaleHelper = LocaleHelper()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,7 +91,7 @@ class MainActivity : AppCompatActivity() {
 
         fab_add_order.setOnClickListener {
             val intent = Intent(this@MainActivity, AddOrderActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, ADD_ORDER)
         }
 
         setSupportActionBar(toolbar_main)
@@ -118,7 +121,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                Toast.makeText(this@MainActivity, "Position is $position", Toast.LENGTH_SHORT).show()
                 Toast.makeText(this@MainActivity, "Week is $week", Toast.LENGTH_SHORT).show()
             }
         }
@@ -153,11 +155,11 @@ class MainActivity : AppCompatActivity() {
             run {
                 when (which) {
                     0 -> {
-                        setLocale("en")
+                        localeHelper.setLocale(this@MainActivity, "en")
                         recreate()
                     }
                     1 -> {
-                        setLocale("vi")
+                        localeHelper.setLocale(this@MainActivity, "vi")
                         recreate()
                     }
                 }
@@ -219,5 +221,13 @@ class MainActivity : AppCompatActivity() {
     private fun dp2px(dp: Int): Int {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(),
                 resources.displayMetrics).toInt()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == ADD_ORDER && resultCode == Activity.RESULT_OK){
+            Toast.makeText(this@MainActivity, "Saved succeed!! $data", Toast.LENGTH_SHORT).show()
+        }
     }
 }

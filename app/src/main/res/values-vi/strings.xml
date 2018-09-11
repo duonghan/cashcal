@@ -18,8 +18,7 @@
     <string name="about_msg">Ứng dụng được viết bởi HD</string>
     <string name="cancel">Trở về</string>
     <string name="result">Kết quả</string>
-    <string name="Tuần_spinner">Tuần Spinner</string>
-    <string name="change_lang">Change language</string>
+    <string name="change_lang">Thay đổi ngôn ngữ</string>
 
     <string-array name="Tuầns">
         <item>Tuần 1</item>
@@ -75,6 +74,9 @@
         <item>Tuần 51</item>
         <item>Tuần 52</item>
     </string-array>
-    <string name="week_spinner">Week Spinner</string>
-    <string name="choose_agent">Choose agent</string>
+    <string name="choose_agent">Chọn người mua</string>
+    <string name="rtt_name">Quản lý chi tiêu</string>
+    <string name="rtt_convenient">Tiện lợi</string>
+    <string name="rtt_fast">Nhanh chóng</string>
+    <string name="rtt_effective">Hiệu quả</string>
 </resources>

@@ -8,9 +8,9 @@
     <string name="title_add_order">Add Order</string>
     <string name="cost">Cost</string>
     <string name="huy">Huy</string>
-    <string name="duong">Dương</string>
-    <string name="khiem">Khiêm</string>
-    <string name="khanh">Khánh</string>
+    <string name="duong">Duong</string>
+    <string name="khiem">Khiem</string>
+    <string name="khanh">Khanh</string>
     <string name="agent">Agent</string>
     <string name="partner">Partner</string>
     <string name="date">Date</string>
@@ -18,7 +18,6 @@
     <string name="about_msg">This application is created by HD</string>
     <string name="cancel">Cancel</string>
     <string name="result">Result</string>
-    <string name="week_spinner">Week Spinner</string>
     <string name="change_lang">Change language</string>
 
     <string-array name="weeks">
@@ -76,4 +75,8 @@
         <item>Week 52</item>
     </string-array>
     <string name="choose_agent">Choose agent</string>
+    <string name="rtt_name">Cash Manager</string>
+    <string name="rtt_convenient">Convenient</string>
+    <string name="rtt_fast">Fast</string>
+    <string name="rtt_effective">Effective</string>
 </resources>

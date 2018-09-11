@@ -81,4 +81,7 @@
     <string name="rtt_effective">Hiệu quả</string>
     <string name="developed_by_duong_han">Phát triển bởi Dương Hàn © 2018</string>
     <string name="settings">Thiết lập</string>
+    <string name="options">Options</string>
+    <string name="add_person">Add person</string>
+    <string name="remove_person">Remove person</string>
 </resources>

@@ -14,6 +14,24 @@
         android:icon="@drawable/ic_language"/>
 
     <item
+        android:id="@+id/menu_item_options"
+        android:title="@string/options" >
+        <menu>
+            <item
+                android:id="@+id/menu_options_add"
+                android:title="@string/add_person"
+                android:icon="@drawable/ic_settings"/>
+
+            <item
+                android:id="@+id/menu_item_options_remove"
+                android:title="@string/remove_person"
+                android:icon="@drawable/ic_settings"/>
+
+        </menu>
+
+    </item>
+
+    <item
         android:id="@+id/menu_item_setting"
         android:title="@string/settings"
         android:icon="@drawable/ic_settings"/>

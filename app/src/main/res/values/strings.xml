@@ -89,4 +89,7 @@
     <string name="rtt_ahihi" translatable="false">¯\\_(ツ)_/¯</string>
     <string name="developed_by_duong_han">Developed by Duong Han © 2018</string>
     <string name="settings">Settings</string>
+    <string name="options">Options</string>
+    <string name="add_person">Add person</string>
+    <string name="remove_person">Remove person</string>
 </resources>

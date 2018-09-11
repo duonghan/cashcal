@@ -20,7 +20,7 @@
     <string name="result">Kết quả</string>
     <string name="change_lang">Thay đổi ngôn ngữ</string>
 
-    <string-array name="Tuầns">
+    <string-array name="weeks">
         <item>Tuần 1</item>
         <item>Tuần 2</item>
         <item>Tuần 3</item>
@@ -79,4 +79,6 @@
     <string name="rtt_convenient">Tiện lợi</string>
     <string name="rtt_fast">Nhanh chóng</string>
     <string name="rtt_effective">Hiệu quả</string>
+    <string name="developed_by_duong_han">Phát triển bởi Dương Hàn © 2018</string>
+    <string name="settings">Thiết lập</string>
 </resources>

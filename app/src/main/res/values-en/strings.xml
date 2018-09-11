@@ -79,4 +79,6 @@
     <string name="rtt_convenient">Convenient</string>
     <string name="rtt_fast">Fast</string>
     <string name="rtt_effective">Effective</string>
+    <string name="developed_by_duong_han">Developed by Duong Han © 2018</string>
+    <string name="settings">Settings</string>
 </resources>

@@ -92,7 +92,7 @@ class AddOrderActivity : AppCompatActivity() {
         val agentId: Int = spinner_agent.selectedItemPosition
         val partnerId: List<Boolean> = listOf(chbHuy.isChecked, chbDuong.isChecked, chbKhiem.isChecked, chbKhanh.isChecked)
         val note: String = input_note.text.toString()
-        val intent: Intent = Intent()
+        val intent = Intent()
 
         if(cost == null) return
 

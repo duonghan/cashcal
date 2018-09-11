@@ -14,6 +14,11 @@
         android:icon="@drawable/ic_language"/>
 
     <item
+        android:id="@+id/menu_item_setting"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_settings"/>
+
+    <item
         android:id="@+id/menu_item_about"
         android:title="@string/about"
         android:icon="@drawable/ic_info"/>

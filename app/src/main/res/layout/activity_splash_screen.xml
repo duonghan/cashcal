@@ -15,11 +15,20 @@
 
     <com.sdsmdg.harjot.rotatingtext.RotatingTextWrapper
         android:id="@+id/custom_switcher"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="40dp"
+        android:layout_alignBottom="@id/logo_splash"
+        android:layout_centerHorizontal="true"
+        android:paddingStart="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-
+    <TextView
+        android:id="@+id/splash_about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="20dp"
+        android:text="@string/developed_by_duong_han" />
 
 </RelativeLayout>

@@ -20,7 +20,9 @@ import android.widget.Toast
 import com.baoyz.swipemenulistview.SwipeMenuCreator
 import com.baoyz.swipemenulistview.SwipeMenuItem
 import com.edu.hust.henry.cashcal.helpers.LocaleHelper
+import com.edu.hust.henry.cashcal.model.OrderData
 import com.edu.hust.henry.cashcal.module.Info
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -29,6 +31,7 @@ const val ADD_ORDER  = 12345
 class MainActivity : AppCompatActivity() {
 
     val localeHelper: LocaleHelper = LocaleHelper()
+    private var orderDB: DatabaseReference = FirebaseDatabase.getInstance().reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,6 +98,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         setSupportActionBar(toolbar_main)
+
+        fetchData()
     }
 
     /**
@@ -139,10 +144,15 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_item_language -> onChangeLang()
             R.id.menu_item_about -> onAbout()
             R.id.menu_item_exit -> System.exit(0)
+            R.id.menu_item_setting -> onSetting()
             else -> Toast.makeText(this, "Invalid Choose", Toast.LENGTH_SHORT).show()
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun onSetting() {
+        Toast.makeText(this@MainActivity, "Settings", Toast.LENGTH_SHORT).show()
     }
 
     /**
@@ -156,11 +166,11 @@ class MainActivity : AppCompatActivity() {
                 when (which) {
                     0 -> {
                         localeHelper.setLocale(this@MainActivity, "en")
-                        recreate()
+                        this@MainActivity.recreate()
                     }
                     1 -> {
                         localeHelper.setLocale(this@MainActivity, "vi")
-                        recreate()
+                        this@MainActivity.recreate()
                     }
                 }
             }
@@ -229,5 +239,19 @@ class MainActivity : AppCompatActivity() {
         if(requestCode == ADD_ORDER && resultCode == Activity.RESULT_OK){
             Toast.makeText(this@MainActivity, "Saved succeed!! $data", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun fetchData(){
+        orderDB.addValueEventListener(object: ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+//                val order = dataSnapshot?.getValue(OrderData::class.java)
+                val tmp = dataSnapshot?.getValue(String::class.java)
+                Toast.makeText(this@MainActivity, "$tmp", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

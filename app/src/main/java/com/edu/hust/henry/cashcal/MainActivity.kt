@@ -242,15 +242,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fetchData(){
-        orderDB.addValueEventListener(object: ValueEventListener {
+        orderDB.child("order").child("2018").child("37").child("3").child("-LM4yIXk5_akRWKXbkUj").addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
-
+                Toast.makeText(this@MainActivity, "loadPost:onCancelled ${p0?.toException()}", Toast.LENGTH_SHORT).show()
             }
 
-            override fun onDataChange(dataSnapshot: DataSnapshot?) {
-//                val order = dataSnapshot?.getValue(OrderData::class.java)
-                val tmp = dataSnapshot?.getValue(String::class.java)
-                Toast.makeText(this@MainActivity, "$tmp", Toast.LENGTH_SHORT).show()
+            override fun onDataChange(p0: DataSnapshot?) {
+                var orderData: OrderData? = p0?.getValue<OrderData>(OrderData::class.java)
+                Toast.makeText(this@MainActivity, "loadPost:onDataChange ${orderData?.dayofweek} ", Toast.LENGTH_SHORT).show()
             }
         })
     }

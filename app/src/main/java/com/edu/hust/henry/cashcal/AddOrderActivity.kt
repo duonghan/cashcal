@@ -4,12 +4,15 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.support.annotation.NonNull
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.edu.hust.henry.cashcal.model.OrderData
 import com.edu.hust.henry.cashcal.module.Info
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_add_order.*
@@ -100,7 +103,12 @@ class AddOrderActivity : AppCompatActivity() {
         val data = OrderData(dayOfWeek, costs, note)
 
         data.uuid = orderDB.child("order").child("$year").child("$week").child("$dayOfWeek").push().key
-        orderDB.child("order").child("$year").child("$week").child("$dayOfWeek").push().setValue(data)
+        orderDB.child("order").child("$year")
+                .child("$week").child("$dayOfWeek")
+                .push().setValue(data)
+                .addOnCompleteListener(OnCompleteListener {
+
+                })
 
         setResult(Activity.RESULT_OK, intent)
         finish()

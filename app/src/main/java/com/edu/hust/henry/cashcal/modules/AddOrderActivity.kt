@@ -1,23 +1,19 @@
-package com.edu.hust.henry.cashcal
+package com.edu.hust.henry.cashcal.modules
 
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.support.annotation.NonNull
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
+import com.edu.hust.henry.cashcal.R
 import com.edu.hust.henry.cashcal.model.OrderData
-import com.edu.hust.henry.cashcal.module.Info
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_add_order.*
 import java.util.*
-import kotlin.math.cos
 
 class AddOrderActivity : AppCompatActivity() {
 
@@ -27,7 +23,7 @@ class AddOrderActivity : AppCompatActivity() {
     private val KHANH = 3
 //    private val NGUYEN = 4
 
-    private var orderDB: DatabaseReference
+    private var orderDB: DatabaseReference = FirebaseDatabase.getInstance().reference
 
     private val c = Calendar.getInstance()
     private var year = c.get(Calendar.YEAR)
@@ -35,10 +31,6 @@ class AddOrderActivity : AppCompatActivity() {
     private var day = c.get(Calendar.DAY_OF_MONTH)
     private var week = c.get(Calendar.WEEK_OF_YEAR)
     private var dayOfWeek = c.get(Calendar.DAY_OF_WEEK)
-
-    init{
-        orderDB = FirebaseDatabase.getInstance().reference
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -100,15 +92,29 @@ class AddOrderActivity : AppCompatActivity() {
         if(cost == null) return
 
         val costs = calCost(cost, agentId, partnerId)
-        val data = OrderData(dayOfWeek, costs, note)
+        val data = OrderData(dayOfWeek, cost, costs, note)
 
         data.uuid = orderDB.child("order").child("$year").child("$week").child("$dayOfWeek").push().key
         orderDB.child("order").child("$year")
                 .child("$week").child("$dayOfWeek")
                 .push().setValue(data)
-                .addOnCompleteListener(OnCompleteListener {
+                .addOnSuccessListener {
+                    val builder = AlertDialog.Builder(this@AddOrderActivity)
+                    builder.setTitle("Successfully")
+                    builder.setMessage("Add order item successfully")
+                    builder.setIcon(R.drawable.ic_success)
+                    builder.setCancelable(true)
+                    builder.create().show()
+                }
+                .addOnFailureListener {
+                    val builder = AlertDialog.Builder(this@AddOrderActivity)
+                    builder.setTitle("Failure")
+                    builder.setMessage("Failure to save data")
+                    builder.setIcon(R.drawable.ic_failure)
+                    builder.setCancelable(true)
+                    builder.create().show()
+                }
 
-                })
 
         setResult(Activity.RESULT_OK, intent)
         finish()

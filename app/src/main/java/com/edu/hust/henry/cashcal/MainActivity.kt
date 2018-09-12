@@ -9,7 +9,6 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
-import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -20,8 +19,12 @@ import android.widget.Toast
 import com.baoyz.swipemenulistview.SwipeMenuCreator
 import com.baoyz.swipemenulistview.SwipeMenuItem
 import com.edu.hust.henry.cashcal.helpers.LocaleHelper
+import com.edu.hust.henry.cashcal.helpers.Utils.dp2px
 import com.edu.hust.henry.cashcal.model.OrderData
-import com.edu.hust.henry.cashcal.module.Info
+import com.edu.hust.henry.cashcal.modules.AddOrderActivity
+import com.edu.hust.henry.cashcal.model.Info
+import com.edu.hust.henry.cashcal.modules.MemberAcitivy
+import com.edu.hust.henry.cashcal.modules.MyCustomAdapter
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -56,7 +59,7 @@ class MainActivity : AppCompatActivity() {
             // set item background
             openItem.background = ColorDrawable(Color.rgb(0xC9, 0xC9, 0xCE))
             // set item width
-            openItem.width = dp2px(90)
+            openItem.width = dp2px(90, this@MainActivity)
             // set item title
             openItem.title = "Open"
             // set item title fontsize
@@ -72,7 +75,7 @@ class MainActivity : AppCompatActivity() {
             // set item background
             deleteItem.background = ColorDrawable(Color.rgb(0xF9, 0x3F, 0x25))
             // set item width
-            deleteItem.width = dp2px(90)
+            deleteItem.width = dp2px(90, this@MainActivity)
             // set a icon
             deleteItem.setIcon(R.drawable.ic_delete)
             // add to menu
@@ -145,10 +148,19 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_item_about -> onAbout()
             R.id.menu_item_exit -> System.exit(0)
             R.id.menu_item_setting -> onSetting()
+            R.id.menu_options_add -> showMember()
             else -> Toast.makeText(this, "Invalid Choose", Toast.LENGTH_SHORT).show()
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    /**
+     * @description: Open member information activity
+     */
+    private fun showMember() {
+        val intent = Intent(this@MainActivity, MemberAcitivy::class.java)
+        startActivity(intent)
     }
 
     private fun onSetting() {
@@ -228,11 +240,6 @@ class MainActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun dp2px(dp: Int): Int {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(),
-                resources.displayMetrics).toInt()
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -248,7 +255,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onDataChange(p0: DataSnapshot?) {
-                var orderData: OrderData? = p0?.getValue<OrderData>(OrderData::class.java)
+                val orderData: OrderData? = p0?.getValue<OrderData>(OrderData::class.java)
                 Toast.makeText(this@MainActivity, "loadPost:onDataChange ${orderData?.dayofweek} ", Toast.LENGTH_SHORT).show()
             }
         })

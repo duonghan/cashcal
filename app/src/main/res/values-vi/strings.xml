@@ -81,7 +81,11 @@
     <string name="rtt_effective">Hiệu quả</string>
     <string name="developed_by_duong_han">Phát triển bởi Dương Hàn © 2018</string>
     <string name="settings">Thiết lập</string>
-    <string name="options">Options</string>
-    <string name="add_person">Add person</string>
-    <string name="remove_person">Remove person</string>
+    <string name="options">Tùy chọn</string>
+    <string name="add_person">Thêm người</string>
+    <string name="remove_person">Xóa người</string>
+    <string name="member">Thành viên</string>
+    <string name="name">Tên</string>
+    <string name="validation_empty">Dữ liệu nhập vào không được để trống</string>
+    <string name="add_member">Thêm thành viên</string>
 </resources>

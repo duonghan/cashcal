@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddOrderActivity">
+    tools:context=".modules.AddOrderActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_add_order"
@@ -34,7 +34,7 @@
                 app:met_floatingLabel="highlight"
                 android:inputType="number"
                 app:met_typeface="fonts/digital-7.ttf"
-                app:met_floatingLabelTextSize="15sp"
+                app:met_floatingLabelTextSize="@dimen/font_normal_size"
                 android:textSize="30sp" />
 
             <TextView
@@ -44,7 +44,7 @@
                 android:layout_below="@id/input_cost"
                 android:layout_marginTop="20dp"
                 android:text="@string/agent"
-                android:textSize="15sp"
+                android:textSize="@dimen/font_normal_size"
                 android:textColor="@color/colorPrimary"/>
 
             <Spinner
@@ -120,7 +120,7 @@
                 android:layout_below="@id/rdo_group"
                 android:layout_marginTop="20dp"
                 android:text="@string/date"
-                android:textSize="15sp"
+                android:textSize="@dimen/font_normal_size"
                 android:textColor="@color/colorPrimary"/>
 
             <TextView
@@ -130,6 +130,7 @@
                 android:layout_below="@id/lbl_date"
                 android:layout_marginTop="20dp"
                 android:text="08/11/2018"
+                android:textSize="@dimen/font_normal_size"
                 android:textColor="@color/Triadic" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
@@ -141,9 +142,9 @@
                 android:layout_marginTop="20dp"
                 app:met_floatingLabel="highlight"
                 android:inputType="textMultiLine"
-                app:met_floatingLabelTextSize="15sp"
+                app:met_floatingLabelTextSize="@dimen/font_normal_size"
                 android:lines="4"
-                android:textSize="15sp" />
+                android:textSize="@dimen/font_normal_size" />
 
         </RelativeLayout>
 

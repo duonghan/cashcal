@@ -1,4 +1,4 @@
-package com.edu.hust.henry.cashcal
+package com.edu.hust.henry.cashcal.modules
 
 import android.content.Intent
 import android.graphics.Color
@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.animation.BounceInterpolator
+import com.edu.hust.henry.cashcal.MainActivity
+import com.edu.hust.henry.cashcal.R
 import com.sdsmdg.harjot.rotatingtext.models.Rotatable
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 

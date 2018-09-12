@@ -1,4 +1,4 @@
-package com.edu.hust.henry.cashcal.module
+package com.edu.hust.henry.cashcal.model
 
 /**
  * Project: CashCal

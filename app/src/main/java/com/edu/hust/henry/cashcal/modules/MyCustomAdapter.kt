@@ -1,4 +1,4 @@
-package com.edu.hust.henry.cashcal
+package com.edu.hust.henry.cashcal.modules
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import com.edu.hust.henry.cashcal.module.Info
+import com.edu.hust.henry.cashcal.R
+import com.edu.hust.henry.cashcal.model.Info
 
 /**
  * Project: CashCal

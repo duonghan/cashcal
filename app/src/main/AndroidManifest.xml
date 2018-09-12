@@ -10,15 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
         </activity>
-        <activity android:name=".AddOrderActivity" />
+        <activity android:name=".modules.AddOrderActivity" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".modules.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".modules.MemberAcitivy"
+            android:label="@string/member"
+            android:theme="@style/Theme.AppCompat.Light"/>
+
     </application>
 
 </manifest>

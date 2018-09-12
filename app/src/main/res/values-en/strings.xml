@@ -84,4 +84,8 @@
     <string name="options">Options</string>
     <string name="add_person">Add person</string>
     <string name="remove_person">Remove person</string>
+    <string name="member">Member</string>
+    <string name="name">Name</string>
+    <string name="validation_empty">Empty input text</string>
+    <string name="add_member">Add Member</string>
 </resources>

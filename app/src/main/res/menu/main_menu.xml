@@ -19,13 +19,18 @@
         <menu>
             <item
                 android:id="@+id/menu_options_add"
-                android:title="@string/add_person"
-                android:icon="@drawable/ic_settings"/>
+                android:title="@string/member"
+                android:icon="@drawable/ic_people"/>
 
-            <item
-                android:id="@+id/menu_item_options_remove"
-                android:title="@string/remove_person"
-                android:icon="@drawable/ic_settings"/>
+            <!--<item-->
+                <!--android:id="@+id/menu_options_add"-->
+                <!--android:title="@string/add_person"-->
+                <!--android:icon="@drawable/ic_add_person"/>-->
+
+            <!--<item-->
+                <!--android:id="@+id/menu_item_options_remove"-->
+                <!--android:title="@string/remove_person"-->
+                <!--android:icon="@drawable/ic_remove_user"/>-->
 
         </menu>
 

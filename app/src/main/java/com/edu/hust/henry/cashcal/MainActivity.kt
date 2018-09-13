@@ -18,6 +18,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import com.baoyz.swipemenulistview.SwipeMenuCreator
 import com.baoyz.swipemenulistview.SwipeMenuItem
+import com.edu.hust.henry.cashcal.helpers.FirebaseDBHelper.fetchOrderData
 import com.edu.hust.henry.cashcal.helpers.LocaleHelper
 import com.edu.hust.henry.cashcal.helpers.Utils.dp2px
 import com.edu.hust.henry.cashcal.model.OrderData
@@ -34,7 +35,7 @@ const val ADD_ORDER  = 12345
 class MainActivity : AppCompatActivity() {
 
     val localeHelper: LocaleHelper = LocaleHelper()
-    private var orderDB: DatabaseReference = FirebaseDatabase.getInstance().reference
+    private var db: DatabaseReference = FirebaseDatabase.getInstance().reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,7 +103,10 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar_main)
 
-        fetchData()
+        val orderList = fetchOrderData(db, this@MainActivity,
+                Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.WEEK_OF_YEAR))
+
     }
 
     /**
@@ -248,16 +252,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun fetchData(){
-        orderDB.child("order").child("2018").child("37").child("3").child("-LM4yIXk5_akRWKXbkUj").addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError?) {
-                Toast.makeText(this@MainActivity, "loadPost:onCancelled ${p0?.toException()}", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onDataChange(p0: DataSnapshot?) {
-                val orderData: OrderData? = p0?.getValue<OrderData>(OrderData::class.java)
-                Toast.makeText(this@MainActivity, "loadPost:onDataChange ${orderData?.dayofweek} ", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
 }

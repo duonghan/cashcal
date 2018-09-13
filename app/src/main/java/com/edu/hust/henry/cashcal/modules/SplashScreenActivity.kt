@@ -21,7 +21,6 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         val typeface_rtt: Typeface = Typeface.createFromAsset(assets, "fonts/UTMAvenida.ttf")
-        val typeface_about: Typeface = Typeface.createFromAsset(assets, "fonts/digital-7 (italic).ttf")
 
         val animationLogo: Animation = AnimationUtils.loadAnimation(this@SplashScreenActivity, R.anim.logo)
         val animationText: Animation = AnimationUtils.loadAnimation(this@SplashScreenActivity, R.anim.bounce)
@@ -41,7 +40,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
         logo_splash.startAnimation(animationLogo)
         custom_switcher.startAnimation(animationText)
-        splash_about.typeface = typeface_about
 
         android.os.Handler().postDelayed(
             {

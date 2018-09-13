@@ -7,6 +7,8 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
         android:layout_marginTop="30dp"
         >
 
@@ -14,7 +16,7 @@
             android:id="@+id/edt_add_person"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="5dp"
+            android:paddingStart="20dp"
             android:hint="@string/name"
             android:textSize="@dimen/font_normal_size" />
 

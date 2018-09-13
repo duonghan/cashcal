@@ -24,7 +24,8 @@
         <activity
             android:name=".modules.MemberAcitivy"
             android:label="@string/member"
-            android:theme="@style/Theme.AppCompat.Light"/>
+            android:theme="@style/AddMemberTheme"
+            android:parentActivityName=".MainActivity"/>
 
     </application>
 

@@ -96,4 +96,12 @@
     <string name="name">Name</string>
     <string name="validation_empty">Empty input text</string>
     <string name="add_member">Add Member</string>
+    <string name="txt_version">1.0.0</string>
+    <string name="txt_author">Duong Han</string>
+    <string name="txt_copyright_symbol">©</string>
+    <string name="txt_about_share_title">Share via</string>
+    <string name="txt_title_header_bbm">Black Berry Messener</string>
+    <string name="txt_bbm_qr_pin">PIN: 2BFE6A3A</string>
+    <string name="delete_confirm_member">Are you sure to deleete this person?</string>
+    <string name="delete_member_title">Delete member</string>
 </resources>

@@ -1,11 +1,14 @@
 package com.edu.hust.henry.cashcal
 
 import android.app.Activity
+import android.app.Dialog
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -21,14 +24,15 @@ import com.baoyz.swipemenulistview.SwipeMenuItem
 import com.edu.hust.henry.cashcal.helpers.FirebaseDBHelper.fetchOrderData
 import com.edu.hust.henry.cashcal.helpers.LocaleHelper
 import com.edu.hust.henry.cashcal.helpers.Utils.dp2px
-import com.edu.hust.henry.cashcal.model.OrderData
-import com.edu.hust.henry.cashcal.modules.AddOrderActivity
 import com.edu.hust.henry.cashcal.model.Info
+import com.edu.hust.henry.cashcal.modules.AddOrderActivity
 import com.edu.hust.henry.cashcal.modules.MemberAcitivy
 import com.edu.hust.henry.cashcal.modules.MyCustomAdapter
-import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
+
 
 const val ADD_ORDER  = 12345
 
@@ -227,18 +231,68 @@ class MainActivity : AppCompatActivity() {
      */
     private fun onAbout(){
         // Initialize a new instance of
-        val builder = AlertDialog.Builder(this@MainActivity)
+        val view = layoutInflater.inflate(R.layout.dialog_about, null)
+        val dialog = AlertDialog.Builder(this@MainActivity)
+                .setTitle(getString(R.string.about))
+                .setIcon(R.drawable.ic_about)
+                .setView(view)
+                .setCancelable(true)
+                .setNegativeButton(getString(R.string.cancel)){ _, _ -> }
 
-        // Set the alert dialog title
-        builder.setTitle(getString(R.string.about))
+        view.setOnClickListener {
+            when(view.id){
+                R.id.ic_about_share -> {
+                    val shareIntent = Intent(Intent.ACTION_SEND)
+                    shareIntent.type = "text/plain"
+                    shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Share subject")
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, "Cash manager application")
+                    startActivity(Intent.createChooser(shareIntent, getString(R.string.txt_about_share_title)))
+                }
+                R.id.ic_about_facebook -> {
+                    var fb: Intent
+                    try {
+                        packageManager.getPackageInfo("com.facebook.katana", 0) //Checks if FB is even installed.
+                        fb = Intent(Intent.ACTION_VIEW,
+                                Uri.parse("fb://facewebmodal/f?href=https://www.facebook.com/0x0fa"))
+                                //Try to make intent with FB's URI
+                    } catch (e: Exception) {
+                        fb = Intent(Intent.ACTION_VIEW,
+                                Uri.parse("https://www.facebook.com/0x0fa")) //catches and opens a url to the desired page
+                    }
 
-        // Display a message on alert dialog
-        builder.setMessage(getString(R.string.about_msg))
-        builder.setCancelable(true)
-        builder.setNegativeButton(getString(R.string.cancel)){ _, _ -> }
+                    startActivity(fb)
+                }
+                R.id.ic_about_twitter -> {
+                    try {
+                        val intent = Intent(Intent.ACTION_VIEW,
+                                Uri.parse("twitter://user?screen_name=minh_nhat314"))
+                        startActivity(intent)
+                    } catch (e: Exception) {
+                        startActivity(Intent(Intent.ACTION_VIEW,
+                                Uri.parse("https://twitter.com/#!/minh_nhat314")))
+                    }
 
-        // Finally, make the alert dialog using builder
-        val dialog: AlertDialog = builder.create()
+                }
+                R.id.ic_about_bbm -> {
+                    val dialog = Dialog(this)
+                    dialog.setTitle(R.string.txt_title_header_bbm)
+                    dialog.setContentView(R.layout.dialog_show_bbm)
+                    dialog.show()
+                }
+                R.id.ic_about_ggplus -> {
+                    try {
+                        val intent = Intent(Intent.ACTION_VIEW)
+                        intent.setClassName("com.google.android.apps.plus",
+                                "com.google.android.apps.plus.phone.UrlGatewayActivity")
+                        intent.putExtra("customAppUri", "102540245952570533629")
+                        startActivity(intent)
+                    } catch (e: ActivityNotFoundException) {
+                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://plus.google.com/102540245952570533629/posts")))
+                    }
+
+                }
+            }
+        }
 
         // Display the alert dialog on app interface
         dialog.show()

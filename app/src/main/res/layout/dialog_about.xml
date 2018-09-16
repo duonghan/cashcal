@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_centerInParent="true"
+        android:id="@+id/about_txt_app_name"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="30sp"/>
+
+    <ImageView
+        android:id="@+id/about_logo"
+        android:layout_above="@id/about_txt_app_name"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_pounds"/>
+
+    <TextView
+        android:id="@+id/about_txt_app_version"
+        android:layout_below="@id/about_txt_app_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_version"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/about_txt_app_author"
+        android:layout_below="@id/about_txt_app_version"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_author"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/about_txt_app_copyright"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/developed_by_duong_han"
+        android:textSize="15sp"/>
+
+    <LinearLayout
+        android:layout_below="@id/about_txt_app_author"
+        android:layout_above="@id/about_txt_app_copyright"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/ic_about_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:src="@drawable/ic_about_share"/>
+
+        <ImageView
+            android:id="@+id/ic_about_facebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:src="@drawable/ic_about_facebook"/>
+
+        <ImageView
+            android:id="@+id/ic_about_twitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:src="@drawable/ic_about_twitter"/>
+
+        <ImageView
+            android:id="@+id/ic_about_bbm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:src="@drawable/ic_about_bbm"/>
+
+        <ImageView
+            android:id="@+id/ic_about_ggplus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:src="@drawable/ic_about_googleplus"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

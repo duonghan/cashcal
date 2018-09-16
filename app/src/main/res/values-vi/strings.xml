@@ -88,4 +88,8 @@
     <string name="name">Tên</string>
     <string name="validation_empty">Dữ liệu nhập vào không được để trống</string>
     <string name="add_member">Thêm thành viên</string>
+    <string name="txt_author">Dương Hàn</string>
+    <string name="txt_about_share_title">Chia sẻ qua</string>
+    <string name="delete_confirm_member">Bạn chắc chắc muốn xóa người này?</string>
+    <string name="delete_member_title">Xóa thành viên</string>
 </resources>

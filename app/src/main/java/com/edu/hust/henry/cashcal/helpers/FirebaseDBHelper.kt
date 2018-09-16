@@ -2,7 +2,6 @@ package com.edu.hust.henry.cashcal.helpers
 
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import com.edu.hust.henry.cashcal.model.Member
 import com.edu.hust.henry.cashcal.model.OrderData
 import com.google.firebase.database.*
@@ -68,20 +67,6 @@ object FirebaseDBHelper{
         return memberList
     }
 
-//    fun fetchMemberDataTest(db: DatabaseReference): MutableList<Member>{
-//        val memberList: MutableList<Member> = mutableListOf()
-//
-//        db.addListenerForSingleValueEvent(object : ValueEventListener{
-//            override fun onCancelled(databaseError: DatabaseError?) {
-//                Log.e(FETCH_NEW_MEMBER_TAG, "postMessages:onCancelled", databaseError!!.toException())
-//            }
-//
-//            override fun onDataChange(dataSnapshot: DataSnapshot?) {
-//
-//            }
-//        })
-//    }
-
     fun fetchOrderData(db: DatabaseReference, context: Context, year: Int, week: Int): MutableList<OrderData>{
         val orderList: MutableList<OrderData> = mutableListOf()
 
@@ -120,6 +105,14 @@ object FirebaseDBHelper{
         })
 
         return orderList
+    }
+
+    fun updateMember(db: DatabaseReference, uuid: String, name: String){
+        db.child(uuid).setValue(name)
+    }
+
+    fun deleteMember(db: DatabaseReference, uuid: String){
+        db.child(uuid).removeValue()
     }
 
 }

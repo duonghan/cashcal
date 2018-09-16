@@ -88,4 +88,8 @@
     <string name="name">Name</string>
     <string name="validation_empty">Empty input text</string>
     <string name="add_member">Add Member</string>
+    <string name="txt_author">Duong Han</string>
+    <string name="txt_about_share_title">Share via</string>
+    <string name="delete_confirm_member">Are you sure to deleete this person?</string>
+    <string name="delete_member_title">Delete member</string>
 </resources>

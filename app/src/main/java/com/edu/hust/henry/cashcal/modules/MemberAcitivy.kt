@@ -6,79 +6,133 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.baoyz.swipemenulistview.SwipeMenuCreator
 import com.baoyz.swipemenulistview.SwipeMenuItem
 import com.edu.hust.henry.cashcal.R
 import com.edu.hust.henry.cashcal.helpers.FirebaseDBHelper.addMember
+import com.edu.hust.henry.cashcal.helpers.FirebaseDBHelper.db
+import com.edu.hust.henry.cashcal.helpers.FirebaseDBHelper.deleteMember
 import com.edu.hust.henry.cashcal.helpers.Utils.dp2px
+import com.edu.hust.henry.cashcal.model.Member
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_member.*
 import kotlinx.android.synthetic.main.dialog_new_member.*
 import kotlinx.android.synthetic.main.dialog_new_member.view.*
-import android.text.Spannable
-import android.text.style.ForegroundColorSpan
-import android.text.SpannableString
-import android.util.Log
-import com.edu.hust.henry.cashcal.helpers.FirebaseDBHelper.fetchMemberData
-import com.edu.hust.henry.cashcal.model.Member
-import com.google.firebase.database.*
 
 
 class MemberAcitivy : AppCompatActivity() {
 
     private val TAG = "MEMBERACTIVITY"
-    private var db: DatabaseReference = FirebaseDatabase.getInstance().reference
-    private var mMemberReference: DatabaseReference? = null
+    private var mMemberReference: DatabaseReference? = FirebaseDatabase.getInstance().getReference("member")
     private var memberList: MutableList<Member> = mutableListOf()
     private var mMemberListener: ChildEventListener? = null
+    private var adapter: ArrayAdapter<String>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_member)
 
         initialTitle()
-
-        mMemberReference = FirebaseDatabase.getInstance().getReference("member")
+        adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayListOf())
+        list_people.adapter = adapter
         firebaseListenerInit()
-        showList(memberList)
-        Log.d(TAG, ">>>>>>>>>>> MemberList: ${memberList.size}")
+
+        showList()
 
         fab_add_person.setOnClickListener {
             showAddMemberDialog(this@MemberAcitivy)
         }
     }
 
-    private fun showList(memberList: MutableList<Member>){
+    private fun showList(){
+//        Log.d(TAG, ">>>>>>>>>>> MemberList: ${memberList.size}")
         val creator = SwipeMenuCreator { menu ->
             // create "delete" item
-            val deleteItem = SwipeMenuItem(
-                    applicationContext)
+            val deleteItem = SwipeMenuItem(applicationContext)
             // set item background
             deleteItem.background = ColorDrawable(Color.rgb(0xF9, 0x3F, 0x25))
             // set item width
-            deleteItem.width = dp2px(90, this@MemberAcitivy)
+            deleteItem.width = dp2px(60, this@MemberAcitivy)
             // set a icon
             deleteItem.setIcon(R.drawable.ic_delete)
+
+            // create "esit" item
+            val editItem = SwipeMenuItem(applicationContext)
+            editItem.background = ColorDrawable(Color.parseColor("#00a968"))
+            editItem.width = dp2px(60, this@MemberAcitivy)
+            editItem.setIcon(R.drawable.ic_edit)
+
             // add to menu
+            menu.addMenuItem(editItem)
             menu.addMenuItem(deleteItem)
         }
 
-        val nameList: MutableList<String> = memberList.map { it.name }.toMutableList()
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, nameList)
-        list_people.adapter = adapter
-
         list_people.setOnMenuItemClickListener { position, menu, index ->
             when (index) {
-                0 -> Toast.makeText(this, "Delete", Toast.LENGTH_SHORT).show()
+                0 -> showUpdateMemberDialog(this@MemberAcitivy, position)
+                1 -> showDeleteMemberDialog(this@MemberAcitivy, position)
             }// open
-            // delete
+
             // false : close the menu; true : not close the menu
             false
         }
 
         // set creator
         list_people.setMenuCreator(creator)
+    }
+
+    private fun showDeleteMemberDialog(context: Context, position: Int) {
+        var member = memberList[position]
+
+        val dialog = AlertDialog.Builder(context)
+                .setTitle(getString(R.string.delete_member_title))
+                .setMessage(getString(R.string.delete_confirm_member) + ", ${member.name}")
+                .setNegativeButton(android.R.string.no) { dialog, _ ->
+                    dialog.cancel()
+                }
+                .setPositiveButton(android.R.string.yes){
+                    dialog, which ->
+                    deleteMember(mMemberReference!!, member.uuid)
+                    dialog.dismiss()
+                }
+
+        dialog.show()
+    }
+
+    private fun showUpdateMemberDialog(context: Context, position: Int) {
+        val view = layoutInflater.inflate(R.layout.dialog_new_member, null)
+        val dialog = AlertDialog.Builder(context)
+                .setTitle(getString(R.string.add_member))
+                .setIcon(R.drawable.ic_add_person_dialog)
+                .setView(view)
+                .setNegativeButton(android.R.string.cancel) { dialog, _ ->
+                    dialog.cancel()
+                }
+                .setPositiveButton(android.R.string.ok){
+                    dialog, which ->
+                    val newMember: String = view.edt_add_person.text.toString()
+                    var isValid = true
+                    if (newMember.isBlank()) {
+                        edt_add_person.error = getString(R.string.validation_empty)
+                        isValid = false
+                    }
+
+                    if (isValid) {
+                        addMember(db, newMember)
+                    }
+
+                    if (isValid) {
+                        dialog.dismiss()
+                    }
+                }
+
+        dialog.show()
     }
 
     private fun showAddMemberDialog(context: Context) {
@@ -88,7 +142,8 @@ class MemberAcitivy : AppCompatActivity() {
         val view = layoutInflater.inflate(R.layout.dialog_new_member, null)
         val dialog = AlertDialog.Builder(context)
             .setTitle(getString(R.string.add_member))
-            .setIcon(R.drawable.ic_add_person_dialog).setView(view)
+            .setIcon(R.drawable.ic_add_person_dialog)
+            .setView(view)
             .setNegativeButton(android.R.string.cancel) { dialog, _ ->
                 dialog.cancel()
             }
@@ -102,7 +157,6 @@ class MemberAcitivy : AppCompatActivity() {
                     }
 
                     if (isValid) {
-                        val db: DatabaseReference = FirebaseDatabase.getInstance().reference
                         addMember(db, newMember)
                     }
 
@@ -134,8 +188,7 @@ class MemberAcitivy : AppCompatActivity() {
                 // onChildAdded() will be called for each node at the first time
                 val member = dataSnapshot!!.getValue(Member::class.java)
                 memberList.add(member!!)
-
-                Log.e(TAG, "onChildAdded:" + member.name)
+                adapter!!.add(member.name)
 
                 val latest = memberList[memberList.size - 1]
             }
@@ -174,8 +227,6 @@ class MemberAcitivy : AppCompatActivity() {
 
         // copy for removing at onStop()
         mMemberListener = childEventListener
-
-        Log.d(TAG, ">>>>>>>>>>> MemberList: ${memberList.size}")
     }
 
     override fun onStop() {
